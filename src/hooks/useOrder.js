@@ -11,7 +11,7 @@ const useOrder = () => {
 
         if (!isLoading && token) {
             //console.log(isLoading, token);
-            fetch(`http://localhost:5000/myOrder?email=${user.email}`, {
+            fetch(`https://mobile-hut.herokuapp.com/myOrder?email=${user.email}`, {
                 headers: {
                     'authorization': `Bearer ${token}`
                 }
@@ -24,7 +24,7 @@ const useOrder = () => {
                         //iterator holds single order of a user [obj]
                         const ids = [iterator.product];
 
-                        axios.post('http://localhost:5000/service/byId', ids)
+                        axios.post('https://mobile-hut.herokuapp.com/service/byId', ids)
                             .then(res => {
 
                                 iterator.items = res.data;

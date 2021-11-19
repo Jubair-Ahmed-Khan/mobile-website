@@ -15,7 +15,7 @@ const PurchaseService = () => {
         data.status = 'Pending';
         //console.log(data);
         // https://hotel-grand-park.herokuapp.com/placeOrder   https://hotel-grand-park.herokuapp.com/addService
-        axios.post('http://localhost:5000/placeOrder', data)
+        axios.post('https://mobile-hut.herokuapp.com/placeOrder', data)
             .then(res => {
                 if (res.data.insertedId) {
                     //alert('Your Order is placed successfully. We will contact with you soon');
