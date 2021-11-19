@@ -11,10 +11,13 @@ const LogInForm = (props) => {
     }
     function setValue(e) {
         e.target.id === 'mail' ? setEmail(e.target.value) : setPassword(e.target.value);
+
     }
+    console.log(email, password);
     return (
 
         <div >
+            <h2 className="text-success text-center mb-5">Login Form</h2>
             {/* enter email */}
             <InputGroup className="mb-2">
                 <Form.Control size="lg" id="mail" placeholder="Email" onBlur={setValue} />

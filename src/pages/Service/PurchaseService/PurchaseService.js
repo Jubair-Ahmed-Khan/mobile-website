@@ -15,7 +15,7 @@ const PurchaseService = () => {
         data.status = 'Pending';
         //console.log(data);
         // https://hotel-grand-park.herokuapp.com/placeOrder   https://hotel-grand-park.herokuapp.com/addService
-        axios.post('https://garir-bazar.herokuapp.com/placeOrder', data)
+        axios.post('http://localhost:5000/placeOrder', data)
             .then(res => {
                 if (res.data.insertedId) {
                     //alert('Your Order is placed successfully. We will contact with you soon');
@@ -37,10 +37,9 @@ const PurchaseService = () => {
     }
     return (
         <div className='mt-4 pt-5'>
-            {/* <h2>This is shipping</h2> */}
             <div className='row m-0 g-0 justify-content-center my-4'>
                 <div className=" col-10 s shadow-lg rounded-3 p-3 p-sm-4 header-bg ">
-                    <h3 className="text-center pb-4 ">Biller Address & Payment</h3>
+                    <h3 className="text-center text-primary pb-4 ">Billing Info</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-floating mb-3">
                             <input type="text" className="form-control" id="floatingName" placeholder="Enter your name"
@@ -65,28 +64,11 @@ const PurchaseService = () => {
                             <input className="form-control" list="datalistOptions" id="detailsAddress"
                                 placeholder="Enter Your Address" type="text"
                                 {...register("address", { required: true })} />
-                            <label htmlFor="detailsAddress">Area, Union, District</label>
+                            <label htmlFor="detailsAddress">Area</label>
                             <span style={errors.address ? visibile : invisibile} className='text-danger ps-2' >* Enter your address</span>
                         </div>
-                        <div className="form-floating mb-2">
-                            <input className="form-control" list="datalistOptions" id="division"
-                                placeholder="Enter Your Division" type="text"
-                                {...register("division", { required: true })} />
-                            <label htmlFor="locationInput">Division</label>
-                            <datalist id="division">
-                                <option value="Dhaka" />
-                                <option value="Chittagong" />
-                                <option value="Rajshahi" />
-                                <option value="Khulna" />
-                                <option value="Sylhet" />
-                                <option value="Barisal" />
-                                <option value="Rangpur" />
-                                <option value="Mymensingh" />
-                            </datalist>
-                            <span style={errors.division ? visibile : invisibile} className='text-danger ps-2' >* Enter your division</span>
-                        </div>
                         <fieldset>
-                            <legend>Select Payment</legend>
+                            <legend>Payment Options</legend>
                             <p>
                                 <label htmlFor="bkash" className='px-2'>
                                     <input type="radio" name="payment" value="bkash"
@@ -94,21 +76,21 @@ const PurchaseService = () => {
                                         {...register("payment", { required: true })} />
                                     <span className='ps-1' >bKash</span>
                                 </label>
-                                {/* <br /> */}
+
                                 <label htmlFor="rocket" className='px-2'>
                                     <input type="radio" name="payment" value="rocket"
                                         id="rocket"
                                         {...register("payment", { required: true })} />
                                     <span className='ps-1' >Rocket</span>
                                 </label>
-                                {/* <br /> */}
-                                <label htmlFor="card" className='px-2'>
-                                    <input type="radio" name="payment" value="card"
+
+                                <label htmlFor="nagad" className='px-2'>
+                                    <input type="radio" name="payment" value="nagad"
                                         id="card"
                                         {...register("payment", { required: true })} />
-                                    <span className='ps-1' >Card</span>
+                                    <span className='ps-1' >Nagad</span>
                                 </label>
-                                {/* <br /> */}
+
                                 <label htmlFor="other" className='px-2'>
                                     <input type="radio" name="payment" value="other"
                                         id="other"
@@ -135,7 +117,7 @@ const PurchaseService = () => {
                             </div>
                         </div>
                         <div className='text-center'>
-                            <input type="submit" value='Confirm Order' />
+                            <input className="btn btn-danger" type="submit" value='Confirm Order' />
                         </div>
                     </form>
                 </div>

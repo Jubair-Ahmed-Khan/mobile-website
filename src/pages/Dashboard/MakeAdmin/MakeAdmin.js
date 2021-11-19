@@ -7,8 +7,8 @@ const MakeAdmin = () => {
     const { token } = useAuth();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        //console.log(data);
-        fetch('https://garir-bazar.herokuapp.com/users/admin', {
+
+        fetch('http://localhost:5000/users/admin', {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${token}`,
@@ -18,9 +18,9 @@ const MakeAdmin = () => {
         })
             .then(res => res.json())
             .then(responseData => {
-                //console.log(responseData);
+
                 if (responseData.modifiedCount) {
-                    //console.log(responseData);
+
                     swal({
                         title: `User with email address '${data.email}' is successfully promoted to admin `,
                         icon: "success",
@@ -56,7 +56,7 @@ const MakeAdmin = () => {
     return (
         <div className='row m-0 g-0 justify-content-center my-4 '>
             <div className=' col-10 shadow-lg p-2 rounded-3' >
-                <h3 className='py-3 text-center'  >Promote a user to admin</h3>
+                <h3 className='py-3 text-center'>Make a user an Admin</h3>
                 <form onSubmit={handleSubmit(onSubmit)} >
                     <div className="form-floating mb-2">
                         <input type="email" className="form-control" placeholder="Enter Service Id"
@@ -65,7 +65,7 @@ const MakeAdmin = () => {
                         <span style={errors.email ? visibile : invisibile} className='text-danger ps-2' >* Enter a user's email address to make him admin</span>
                     </div>
                     <div className='text-center'>
-                        <input type="submit" value='Make Admin' />
+                        <input className="btn btn-success" type="submit" value='Make Admin' />
                     </div>
                 </form>
             </div>

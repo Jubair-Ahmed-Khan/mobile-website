@@ -15,88 +15,87 @@ import ReviewWrite from '../ReviewWrite/ReviewWrite';
 import './Dashboard.css';
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 const Dashboard = () => {
+
     const { user, admin, logOut } = useAuth();
-    // console.log(admin);
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
     //for nested routing
     let { path, url } = useRouteMatch();
-    //console.log(path, url);
 
     const style = {
         color: 'red'
     }
     return (
-        <div className='mt-5 pt-4'>
-            <div className='row  mx-0 py-2 border-bottom'>
-                <div className='col-md-8 ' >
-                    <h2 className='fw-bold text-center'>{user.displayName.trim() + "'s"} Dashboard </h2>
-                </div>
-                <div className='col-md-4'>
-                    <div className='text-center' >
-                        <Button variant="primary" onClick={handleShow} className="me-2">
-                            Dashboard Menu
-                        </Button>
-                    </div>
+        <div className='container mt-3 pt-4'>
+            <div className='row mx-0 py-2'>
+                <h2 className='fw-bold text-center mb-5'>{user.displayName.trim() + "'s"} Dashboard </h2>
+                <div className='text-center' >
+                    <Button variant="danger mb-5" onClick={handleShow}>
+                        Dashboard Menu
+                    </Button>
                 </div>
             </div>
             <Offcanvas show={show} onHide={handleClose} >
-                <Offcanvas.Header closeButton className='bg-secondary'>
+                <Offcanvas.Header closeButton className='bg-success'>
                     <Offcanvas.Title className='text-white' >Dashboard</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <div>
-                        <div className='drawer-list-item py-3 border-dark border-bottom '>
+                        <div className='drawer-list-item py-3 border-dark border-bottom' style={{ backgroundColor: "lightblue" }}>
                             <h4 className='text-center m-0'>
                                 <NavLink exact to={`${url}`} activeStyle={style} style={{ textDecoration: 'none' }}>Profile</NavLink>
                             </h4>
                         </div>
                         {admin ? <>
+                            <div className='drawer-list-item py-3 border-dark border-bottom' style={{ backgroundColor: "lightblue" }}>
+                                <h4 className='text-center m-0'>
+                                    <NavLink exact to={`${url}/make-admin`} activeStyle={style} style={{ textDecoration: 'none' }}>Make Admin</NavLink>
+                                </h4>
+                            </div>
 
-                            <div className='drawer-list-item py-3 border-dark border-bottom'>
+                            <div className='drawer-list-item py-3 border-dark border-bottom' style={{ backgroundColor: "lightblue" }}>
                                 <h4 className='text-center m-0'>
-                                    <NavLink exact to={`${url}/manage-order`} activeStyle={style} style={{ textDecoration: 'none' }}>Manage Orders <MdOutlineAdminPanelSettings /> </NavLink>
+                                    <NavLink exact to={`${url}/manage-order`} activeStyle={style} style={{ textDecoration: 'none' }}>Manage Orders</NavLink>
                                 </h4>
                             </div>
-                            <div className='drawer-list-item py-3 border-dark border-bottom'>
+                            <div className='drawer-list-item py-3 border-dark border-bottom' style={{ backgroundColor: "lightblue" }}>
                                 <h4 className='text-center m-0'>
-                                    <NavLink exact to={`${url}/manage-service`} activeStyle={style} style={{ textDecoration: 'none' }}>Manage Services <MdOutlineAdminPanelSettings /></NavLink>
+                                    <NavLink exact to={`${url}/manage-service`} activeStyle={style} style={{ textDecoration: 'none' }}>Manage Services</NavLink>
                                 </h4>
                             </div>
-                            <div className='drawer-list-item py-3 border-dark border-bottom'>
+                            <div className='drawer-list-item py-3 border-dark border-bottom' style={{ backgroundColor: "lightblue" }}>
                                 <h4 className='text-center m-0'>
-                                    <NavLink exact to={`${url}/add-service`} activeStyle={style} style={{ textDecoration: 'none' }}>Add Service <MdOutlineAdminPanelSettings /></NavLink>
+                                    <NavLink exact to={`${url}/add-service`} activeStyle={style} style={{ textDecoration: 'none' }}>Add Service</NavLink>
                                 </h4>
                             </div>
-                            <div className='drawer-list-item py-3 border-dark border-bottom'>
-                                <h4 className='text-center m-0'>
-                                    <NavLink exact to={`${url}/make-admin`} activeStyle={style} style={{ textDecoration: 'none' }}>Make Admin <MdOutlineAdminPanelSettings /></NavLink>
-                                </h4>
-                            </div>
+
                         </>
                             :
                             <>
-                                <div className='drawer-list-item py-3 border-dark border-bottom'>
+                                <div className='drawer-list-item py-3 border-dark border-bottom' style={{ backgroundColor: "lightblue" }}>
                                     <h4 className='text-center m-0'>
                                         <NavLink exact to={`${url}/my-order`} activeStyle={style} style={{ textDecoration: 'none' }}>My Orders</NavLink>
                                     </h4>
                                 </div>
-                                <div className='drawer-list-item py-3 border-dark border-bottom'>
+
+
+                                <div className='drawer-list-item py-3 border-dark border-bottom' style={{ backgroundColor: "lightblue" }}>
                                     <h4 className='text-center m-0'>
-                                        <NavLink exact to={`${url}/payment`} activeStyle={style} style={{ textDecoration: 'none' }}>Payment</NavLink>
+                                        <NavLink exact to={`${url}/review`} activeStyle={style} style={{ textDecoration: 'none' }}>Review</NavLink>
                                     </h4>
                                 </div>
 
-                                <div className='drawer-list-item py-3 border-dark border-bottom'>
+                                <div className='drawer-list-item py-3 border-dark border-bottom' style={{ backgroundColor: "lightblue" }}>
                                     <h4 className='text-center m-0'>
-                                        <NavLink exact to={`${url}/review`} activeStyle={style} style={{ textDecoration: 'none' }}>Review</NavLink>
+                                        <NavLink exact to={`${url}/payment`} activeStyle={style} style={{ textDecoration: 'none' }}>Payment</NavLink>
                                     </h4>
                                 </div>
                             </>
 
                         }
-                        <div className='drawer-list-item py-3 border-dark border-bottom'>
+                        <div className='drawer-list-item py-3 border-dark border-bottom' style={{ backgroundColor: "lightblue" }}>
                             <h4 className='text-center m-0' onClick={logOut}>
                                 <NavLink exact to='/' activeStyle={style} style={{ textDecoration: 'none' }}>Log Out</NavLink>
                             </h4>

@@ -1,13 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 const NotFound = () => {
+
+    const history = useHistory();
+    const src = "https://i.ibb.co/26QDftm/404-error.jpg";
+
+    // redirect to home on button click 
+    const redirectHome = () => {
+        history.push('/home');
+    }
+
     return (
-        <div className='d-flex flex-column align-items-center justify-content-center' style={{ height: '80vh' }}>
-            <h2 className='fw-bold'> <span className='fs-1 text-danger' >404</span>  - Page Not Found</h2>
-            <h3>Go back to <Link to='/home' className='fw-bold'>  Home Page </Link></h3>
+        <div className="container-fluid">
+            <div className="w-100 d-flex flex-column justify-content-center align-items-center">
+                <img className="img-fluid" src={src} alt="404_error" />
+                <br /> <br />
+                <button onClick={redirectHome} className="btn btn-dark my-5">Go back to Home</button>
+            </div>
         </div>
     );
+
 };
 
 export default NotFound;

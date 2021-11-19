@@ -2,14 +2,13 @@ import React from 'react';
 import { Container, Row, Spinner } from 'react-bootstrap';
 import { useLocation } from 'react-router';
 import swal from 'sweetalert';
-import useCar from '../../../hooks/useCar';
+import useMobile from '../../../hooks/useMobile';
 import ServiceCard from '../../Service/ServiceCard/ServiceCard';
 
 const ManageServices = () => {
-    const { car, isLoadingCar, setCar } = useCar();
+    const { mobile, isLoadingMobile, setMobile } = useMobile();
     const loc = useLocation();
     function handleServiceDelete(id) {
-        //console.log('service delete id', id);
         swal({
             title: "Are you sure to Delete?",
             icon: "warning",
@@ -18,7 +17,7 @@ const ManageServices = () => {
         })
             .then((x) => {
                 if (x) {
-                    fetch(`https://garir-bazar.herokuapp.com/deleteService/${id}`, {
+                    fetch(`http://localhost:5000/deleteService/${id}`, {
                         method: 'delete'
                     })
                         .then(res => res.json())
@@ -29,8 +28,8 @@ const ManageServices = () => {
                                     icon: "success",
                                     button: "Ok",
                                 });
-                                const remainingCar = car.filter(x => x.id !== id);
-                                setCar(remainingCar);
+                                const remainingMobile = mobile.filter(x => x.id !== id);
+                                setMobile(remainingMobile);
                             }
                             else {
                                 swal({
@@ -46,12 +45,12 @@ const ManageServices = () => {
     return (
         <div>
             {
-                !isLoadingCar ?
+                !isLoadingMobile ?
                     <div>
                         <Container>
                             <Row md={2} lg={3} sm={2} xs={1} className="g-2 m-0 my-3">
                                 {
-                                    car.map(x => <ServiceCard key={x.id} data={x} from={loc.pathname.toLocaleLowerCase()} event={handleServiceDelete}></ServiceCard>)
+                                    mobile.map(x => <ServiceCard key={x.id} data={x} from={loc.pathname.toLocaleLowerCase()} event={handleServiceDelete}></ServiceCard>)
                                 }
                             </Row>
                         </Container>

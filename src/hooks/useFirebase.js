@@ -4,6 +4,7 @@ import swal from 'sweetalert';
 import InitializeFirebase from '../pages/LogIn/Firebase/firebase.init';
 InitializeFirebase();
 const useFirebase = () => {
+
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
     const [admin, setAdmin] = useState(false);
@@ -16,22 +17,9 @@ const useFirebase = () => {
     const signInUsingGoogle = () => {
         setIsLoading(true);
         return signInWithPopup(auth, googleProvider)
-        // .then(result => {
-        //     setUser(result.user);
-        // })
-        // .catch(error => {
-        //     setError(error.message);
-        // })
     };
     const createUserByEmailPassword = (email, password, displayName) => {
         return createUserWithEmailAndPassword(auth, email, password)
-        // .then(result => {
-        //     const newUser = {
-        //         ...result.user,
-        //         displayName: displayName
-        //     }
-        //     setUser(newUser);
-        // })
     }
 
     const logOut = () => {
@@ -53,14 +41,8 @@ const useFirebase = () => {
     const signInUser = (email, password) => {
         setIsLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
-        // .then(res => {
-        //     // console.log('success');
-        //     setUser(res.user);
-        // })
-        // .catch(error => {
-        //     setError(error.message);
-        // })
     }
+
     const updateProfileName = (displayName) => {
         setIsLoading(true);
         updateProfile(auth.currentUser, {
@@ -73,6 +55,7 @@ const useFirebase = () => {
             setIsLoading(false);
         })
     }
+
     useEffect(() => {
         setIsLoading(true);
         const unsubscribed = onAuthStateChanged(auth, (user) => {
@@ -82,13 +65,6 @@ const useFirebase = () => {
                     .then(idToken => {
                         setToken(idToken);
                     })
-                // fetch(`https://garir-bazar.herokuapp.com/users/${user.email}`)
-                //     .then(res => res.json())
-                //     .then(data => {
-                //         //console.log('email  address: ', user.email, ' isAdmin: ', data.admin)
-                //         setAdmin(data.admin);
-                //         setIsLoadingAdmin(false);
-                //     })
             }
             else {
                 setUser({});
@@ -97,12 +73,10 @@ const useFirebase = () => {
         });
         return () => unsubscribed;
     }, [auth])
-    //useEffect te  user.email asar agei ekbar run hy a jasse, jar fole  
-    // https://garir-bazar.herokuapp.com/users/undefined ei link fetch korte partase na.
-    // tai user load howar por e amdr admin kina check korte hbe
+
     useEffect(() => {
         setIsLoadingAdmin(true);
-        fetch(`https://garir-bazar.herokuapp.com/users/${user.email}`)
+        fetch(`http://localhost:5000/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 //console.log(user.email, data.admin)
@@ -114,7 +88,7 @@ const useFirebase = () => {
     function saveUser(email, displayName, method) {
         const user = { email, displayName };
         console.log(email, displayName);
-        fetch('https://garir-bazar.herokuapp.com/users', {
+        fetch('http://localhost:5000/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'

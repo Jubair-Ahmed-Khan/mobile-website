@@ -8,9 +8,9 @@ const ManageAllOrder = () => {
     window.scrollTo(0, 0);
     const location = useLocation();
     const { isLoadingAllOrder, allOrders, setAllOrders } = useAllOrder();
-    //console.log('all orders: ', allOrders);
+
     const handleStatus = (desiredStatus, id) => {
-        //console.log(desiredStatus, id);
+
         swal({
             title: "Are you sure to Change Status of this order?",
             icon: "warning",
@@ -20,7 +20,7 @@ const ManageAllOrder = () => {
             .then((x) => {
                 if (x) {
                     if (desiredStatus.status === 'Delete') {
-                        fetch(`https://garir-bazar.herokuapp.com/deleteOrder/${id}`, {
+                        fetch(`http://localhost:5000/deleteOrder/${id}`, {
                             method: 'delete'
                         })
                             .then(res => res.json())
@@ -50,7 +50,7 @@ const ManageAllOrder = () => {
                             }
                             return x;
                         });
-                        fetch(`https://garir-bazar.herokuapp.com/updateOrder/${id}`, {
+                        fetch(`http://localhost:5000/updateOrder/${id}`, {
                             method: 'put',
                             headers: {
                                 'content-type': 'application/json'
@@ -59,7 +59,7 @@ const ManageAllOrder = () => {
                         })
                             .then(resp => resp.json())
                             .then(data => {
-                                // console.log(data);
+
                                 if (data.modifiedCount > 0) {
                                     setAllOrders(newArr);
                                     swal({
@@ -92,20 +92,14 @@ const ManageAllOrder = () => {
                     ?
                     allOrders.length
                         ?
-                        <div className='row g-0 justify-content-center mb-5 mt-2'>
-                            <div className='col-12 px-2 px-md-0 col-md-11 '>
-                                <div className='row m-0 g-0 border-bottom border-top border-2 border-dark text-center'>
-                                    <div className='col-md-10 col-8 border-end border-2 border-dark py-2'>
-                                        <h4 className='fw-bold text-primary'>Orders</h4>
-                                    </div>
-                                    <div className='col-md-2 col-4 py-2'>
-                                        <h4 className='fw-bold text-primary'>Status</h4>
-                                    </div>
-                                </div>
+                        <div className="container my-5">
+                            <h2 className="text-danger text-center my-5">Manage Orders</h2>
+                            <div className="mx-auto">
                                 {
-                                    allOrders.map(x => <SingleOrder data={x} key={x._id} from={location.pathname.toLocaleLowerCase()} event={handleStatus} ></SingleOrder>)
+                                    allOrders.map(x => <SingleOrder data={x} key={x._id} from={location.pathname.toLowerCase()} event={handleStatus}></SingleOrder>)
                                 }
                             </div>
+
                         </div>
                         :
                         <div style={{ height: '55vh' }} className='d-flex align-items-center justify-content-center' >

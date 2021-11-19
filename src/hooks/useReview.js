@@ -5,11 +5,10 @@ const useReview = () => {
     const [isLoadingReview, setIsLoadingReview] = useState(true);
     //''
     useEffect(() => {
-        fetch('https://garir-bazar.herokuapp.com/reviews')
+        fetch('http://localhost:5000/reviews')
             .then(resp => resp.json())
             .then(data => {
                 setReview(data);
-                //console.log(data);
                 setIsLoadingReview(false);
             })
     }, [])

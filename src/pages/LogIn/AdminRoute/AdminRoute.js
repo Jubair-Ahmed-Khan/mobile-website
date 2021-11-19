@@ -6,7 +6,7 @@ import useAuth from '../../../hooks/useAuth';
 const AdminRoute = (props) => {
     const { admin, isLoadingAdmin } = useAuth();
     const { children, ...rest } = props;
-    // console.log(isLoadingAdmin, admin);
+
     if (isLoadingAdmin === true) {
         return (
             <div className='mt-5 pt-5 text-center' style={{ height: '100vh' }}>

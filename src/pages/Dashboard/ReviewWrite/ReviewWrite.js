@@ -14,8 +14,8 @@ const ReviewWrite = () => {
     const onSubmit = data => {
         data.rating = rating;
         data.img = user?.photoURL || ' https://i.ibb.co/X2sVX2b/profile.png ';
-        //console.log(data);
-        axios.post('https://garir-bazar.herokuapp.com/submitReview', data)
+
+        axios.post('http://localhost:5000/submitReview', data)
             .then(res => {
                 if (res.data.insertedId) {
                     swal({
@@ -27,7 +27,7 @@ const ReviewWrite = () => {
                 }
             })
     }
-    //console.log(rating);
+
     const visibile = {
         visibility: 'visible'
     }
@@ -72,16 +72,14 @@ const ReviewWrite = () => {
                             </FloatingLabel>
                             <h4>Give us a rating</h4>
                             <Rating
-                                emptySymbol="fa fa-star-o fa-2x "
-                                fullSymbol="fa fa-star fa-2x "
+                                emptySymbol="fa fa-star-o fa-2x text-warning "
+                                fullSymbol="fa fa-star fa-2x text-warning"
                                 fractions={2}
-                                // onClick={(rate) => rate ? setRating(rate) : setRating(0)}
                                 onClick={(rate) => rate && setRating(rate)}
                             />
-                            <span className='' >{rating}/5</span>
 
                             <div className='text-center mt-3'>
-                                <input type="submit" value='Add Review' />
+                                <input className="btn btn-danger" type="submit" value='Add Review' />
                             </div>
                         </form>
 
