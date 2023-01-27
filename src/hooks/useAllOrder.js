@@ -10,7 +10,7 @@ const useAllOrder = () => {
     useEffect(() => {
         if (!isLoading && token) {
 
-            fetch(`https://mobile-hut.herokuapp.com/orders`, {
+            fetch(`https://mobile-hut.onrender.com/orders`, {
                 headers: {
                     'authorization': `Bearer ${token}`
                 }
@@ -22,7 +22,7 @@ const useAllOrder = () => {
 
                         const ids = [iterator.product];
 
-                        axios.post('https://mobile-hut.herokuapp.com/service/byId', ids)
+                        axios.post('https://mobile-hut.onrender.com/service/byId', ids)
                             .then(res => {
                                 iterator.items = res.data;
                             })

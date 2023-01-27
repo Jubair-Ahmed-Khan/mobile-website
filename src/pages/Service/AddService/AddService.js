@@ -7,7 +7,7 @@ const AddService = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
 
-        axios.post('https://mobile-hut.herokuapp.com/addService', data)
+        axios.post('https://mobile-hut.onrender.com/addService', data)
             .then(res => {
                 if (res?.data === 'already have this id') {
                     swal({
@@ -34,7 +34,7 @@ const AddService = () => {
     // load mobiles 
 
     useEffect(() => {
-        fetch('https://mobile-hut.herokuapp.com/services')
+        fetch('https://mobile-hut.onrender.com/services')
             .then(res => res.json())
             .then(data => setMobiles(data));
     }, [])

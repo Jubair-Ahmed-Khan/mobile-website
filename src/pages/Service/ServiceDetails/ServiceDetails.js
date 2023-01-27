@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import './ServiceDetails.css';
-import { Button, Col, Container, Row, Spinner } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 import useMobile from '../../../hooks/useMobile';
-import useAuth from '../../../hooks/useAuth';
+
 
 const ServiceDetails = () => {
     const { serviceId } = useParams();
@@ -28,21 +28,9 @@ const ServiceDetails = () => {
                         <div className='mx-3 mt-3  text-center' >
                             <img src={currentService?.img} alt={" image of " + currentService?.name} width='75%' className='rounded' />
                         </div>
-
-                        {/* <div className='py-2 px-3'>
-                            <h5 className=' fw-bold text-center'>
-                                Price: <span className='text-warning'>{currentService?.price} ৳</span>
-                            </h5>
-                        </div> */}
                     </div>
                     <div className='py-4 text-center '>
-                        {/* <Button variant='primary' onClick={() => { history.push('/home') }} className='ms-2' >
-                        Go Back to
-                        <AiFillHome className='ps-2 fs-3' />
-                    </Button> */}
-                        {/* <Button variant='danger' onClick={() => { history.push(`/order/${currentService?.id}`) }} className='ms-4' >
-                            Buy Now
-                        </Button> */}
+
                     </div>
                 </div>
                 <div className="col-sm-12 col-md-6 col-lg-6 ps-5">
@@ -78,12 +66,6 @@ const ServiceDetails = () => {
                                 <th>{currentService?.price} Tk</th>
                             </tr>
                         </tbody>
-                        {/* <tfoot>
-                            <tr>
-                                <th>Total Price</th>
-                                <th>$<span id="subtotal">1299</span></th>
-                            </tr>
-                        </tfoot> */}
                     </table>
                     <div className="text-center">
 

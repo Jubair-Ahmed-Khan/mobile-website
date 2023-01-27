@@ -18,7 +18,7 @@ const MyOrder = () => {
         })
             .then((x) => {
                 if (x) {
-                    fetch(`https://mobile-hut.herokuapp.com/deleteOrder/${id}`, {
+                    fetch(`https://mobile-hut.onrender.com/deleteOrder/${id}`, {
                         method: 'delete'
                     })
                         .then(res => res.json())

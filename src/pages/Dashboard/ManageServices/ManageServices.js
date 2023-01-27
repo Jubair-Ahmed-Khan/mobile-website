@@ -17,7 +17,7 @@ const ManageServices = () => {
         })
             .then((x) => {
                 if (x) {
-                    fetch(`https://mobile-hut.herokuapp.com/deleteService/${id}`, {
+                    fetch(`https://mobile-hut.onrender.com/deleteService/${id}`, {
                         method: 'delete'
                     })
                         .then(res => res.json())

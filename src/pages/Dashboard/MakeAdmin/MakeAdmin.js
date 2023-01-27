@@ -8,7 +8,7 @@ const MakeAdmin = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
 
-        fetch('https://mobile-hut.herokuapp.com/users/admin', {
+        fetch('https://mobile-hut.onrender.com/users/admin', {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${token}`,

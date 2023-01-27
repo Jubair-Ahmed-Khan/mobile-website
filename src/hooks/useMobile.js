@@ -5,7 +5,7 @@ const useMobile = () => {
     const [isLoadingMobile, setIsLoadingMobile] = useState(true);
 
     useEffect(() => {
-        fetch('https://mobile-hut.herokuapp.com/services')
+        fetch('https://mobile-hut.onrender.com/services')
             .then(res => res.json())
             .then(data => {
                 setMobile(data);

@@ -76,7 +76,7 @@ const useFirebase = () => {
 
     useEffect(() => {
         setIsLoadingAdmin(true);
-        fetch(`https://mobile-hut.herokuapp.com/users/${user.email}`)
+        fetch(`https://mobile-hut.onrender.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 //console.log(user.email, data.admin)
@@ -88,7 +88,7 @@ const useFirebase = () => {
     function saveUser(email, displayName, method) {
         const user = { email, displayName };
         console.log(email, displayName);
-        fetch('https://mobile-hut.herokuapp.com/users', {
+        fetch('https://mobile-hut.onrender.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'

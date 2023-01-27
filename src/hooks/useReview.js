@@ -5,7 +5,7 @@ const useReview = () => {
     const [isLoadingReview, setIsLoadingReview] = useState(true);
     //''
     useEffect(() => {
-        fetch('https://mobile-hut.herokuapp.com/reviews')
+        fetch('https://mobile-hut.onrender.com/reviews')
             .then(resp => resp.json())
             .then(data => {
                 setReview(data);

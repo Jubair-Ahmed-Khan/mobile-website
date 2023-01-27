@@ -15,7 +15,7 @@ const ReviewWrite = () => {
         data.rating = rating;
         data.img = user?.photoURL || ' https://i.ibb.co/X2sVX2b/profile.png ';
 
-        axios.post('https://mobile-hut.herokuapp.com/submitReview', data)
+        axios.post('https://mobile-hut.onrender.com/submitReview', data)
             .then(res => {
                 if (res.data.insertedId) {
                     swal({

@@ -13,7 +13,6 @@ import MyOrder from '../MyOrder/MyOrder';
 import Payment from '../Paymnet/Payment';
 import ReviewWrite from '../ReviewWrite/ReviewWrite';
 import './Dashboard.css';
-import { MdOutlineAdminPanelSettings } from "react-icons/md";
 const Dashboard = () => {
 
     const { user, admin, logOut } = useAuth();

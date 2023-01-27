@@ -34,29 +34,6 @@ const Banner = () => {
             </Container>
         </div>
 
-
-
-
-        // <div >
-        //     <Carousel variant="dark">
-        //         <Carousel.Item>
-        //             <div
-        //                 style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)),url(${img1})` }} className='banner-pos'>
-        //             </div>
-        //         </Carousel.Item>
-        //         <Carousel.Item>
-        //             <div
-        //                 style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)),url(${img2})` }} className='banner-pos'>
-        //             </div>
-
-        //         </Carousel.Item>
-        //         <Carousel.Item>
-        //             <div
-        //                 style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)),url(${img3})` }} className='banner-pos'>
-        //             </div>
-        //         </Carousel.Item>
-        //     </Carousel>
-        // </div>
     );
 };
 

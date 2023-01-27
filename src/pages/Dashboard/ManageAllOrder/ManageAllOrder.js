@@ -20,7 +20,7 @@ const ManageAllOrder = () => {
             .then((x) => {
                 if (x) {
                     if (desiredStatus.status === 'Delete') {
-                        fetch(`https://mobile-hut.herokuapp.com/deleteOrder/${id}`, {
+                        fetch(`https://mobile-hut.onrender.com/deleteOrder/${id}`, {
                             method: 'delete'
                         })
                             .then(res => res.json())
@@ -50,7 +50,7 @@ const ManageAllOrder = () => {
                             }
                             return x;
                         });
-                        fetch(`https://mobile-hut.herokuapp.com/updateOrder/${id}`, {
+                        fetch(`https://mobile-hut.onrender.com/updateOrder/${id}`, {
                             method: 'put',
                             headers: {
                                 'content-type': 'application/json'
